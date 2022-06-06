@@ -11,7 +11,7 @@ public class VentanaPrincipal extends JFrame{
     
     public VentanaPrincipal() throws SQLException{
         setTitle("Ferreteria");
-        setSize(800,600);
+        setSize(900,700);
         setLocation(500,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setBackground(Color.decode("#CADCF5"));
@@ -26,7 +26,7 @@ public class VentanaPrincipal extends JFrame{
     
     public void inicializar() throws SQLException{
         mainPanel = new MainPanel();
-        mainPanel.setBounds(25,25,735,510);
+        mainPanel.setBounds(25,25,830,610);
         getContentPane().add(mainPanel);
         mainPanel.setVisible(true);
     }

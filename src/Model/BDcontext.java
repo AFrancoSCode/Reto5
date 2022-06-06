@@ -95,6 +95,9 @@ public class BDcontext {
     
     public String CreateProducto(ProductoClass producto) throws SQLException{
         /* Este metodo se usa para crear un nuevo producto, requiere como parametro un objeto de tipo producto y devuelve un mensaje */
+        if(!producto.Codigo.matches("[0-9]+")){
+            return "El codigo de producto debe de ser un numero";
+        }
         String sql = "SELECT * FROM productos WHERE productos.codigo = " + producto.Codigo + ";";
         Statement statement = conn.createStatement();
         ResultSet result = statement.executeQuery(sql);

@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -23,6 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 public class MainPanel extends JPanel{
@@ -55,7 +57,7 @@ public class MainPanel extends JPanel{
         titulo = new JLabel("PANEL DE PRODUCTOS");
         titulo.setFont(new Font("Arial", Font.BOLD, 20));
         titulo.setForeground(Color.decode("#006BFF"));
-        titulo.setBounds(235,20,400,80);
+        titulo.setBounds(315,20,400,80);
         add(titulo);
         
         /* Campos de Codigo de producto */
@@ -63,11 +65,11 @@ public class MainPanel extends JPanel{
         JLabel labelCodigo = new JLabel("Codigo:");
         labelCodigo.setFont(new Font("Arial", Font.PLAIN, 15));
         labelCodigo.setForeground(Color.decode("#006BFF"));
-        labelCodigo.setBounds(20,75,100,50);
+        labelCodigo.setBounds(120,175,100,50);
         add(labelCodigo);
         
         Codigo = new JTextField();
-        Codigo.setBounds(75, 90, 100, 20);
+        Codigo.setBounds(120, 210, 300, 20);
         add(Codigo);
         
         /* Campos de Nombre de producto */
@@ -75,11 +77,11 @@ public class MainPanel extends JPanel{
         JLabel labelNombre = new JLabel("Nombre:");
         labelNombre.setFont(new Font("Arial", Font.PLAIN, 15));
         labelNombre.setForeground(Color.decode("#006BFF"));
-        labelNombre.setBounds(180,75,100,50);
+        labelNombre.setBounds(120,220,100,50);
         add(labelNombre);
         
         Nombre = new JTextField();
-        Nombre.setBounds(240, 90, 100, 20);
+        Nombre.setBounds(120, 255, 300, 20);
         add(Nombre);
         
         /* Campos de ValorCompra de producto*/
@@ -87,11 +89,11 @@ public class MainPanel extends JPanel{
         JLabel labelValorCompra = new JLabel("Valor de compra:");
         labelValorCompra.setFont(new Font("Arial", Font.PLAIN, 15));
         labelValorCompra.setForeground(Color.decode("#006BFF"));
-        labelValorCompra.setBounds(345,75,120,50);
+        labelValorCompra.setBounds(120,265,120,50);
         add(labelValorCompra);
         
         ValorCompra = new JTextField();
-        ValorCompra.setBounds(460, 90, 100, 20);
+        ValorCompra.setBounds(120,300,300,20);
         add(ValorCompra);
         
         /* Campos de ValorVenta de producto */
@@ -99,11 +101,11 @@ public class MainPanel extends JPanel{
         JLabel labelValorVenta = new JLabel("Valor de venta:");
         labelValorVenta.setFont(new Font("Arial", Font.PLAIN, 15));
         labelValorVenta.setForeground(Color.decode("#006BFF"));
-        labelValorVenta.setBounds(20,100,120,50);
+        labelValorVenta.setBounds(120,310,120,50);
         add(labelValorVenta);
         
         ValorVenta = new JTextField();
-        ValorVenta.setBounds(120, 115, 100, 20);
+        ValorVenta.setBounds(120, 345, 300, 20);
         add(ValorVenta);
         
         /* Campos de Cantidad de producto*/
@@ -111,11 +113,11 @@ public class MainPanel extends JPanel{
         JLabel labelCantidad = new JLabel("Cantidad:");
         labelCantidad.setFont(new Font("Arial", Font.PLAIN, 15));
         labelCantidad.setForeground(Color.decode("#006BFF"));
-        labelCantidad.setBounds(225,100,120,50);
+        labelCantidad.setBounds(120,355,120,50);
         add(labelCantidad);
         
         Cantidad = new JTextField();
-        Cantidad.setBounds(290, 115, 100, 20);
+        Cantidad.setBounds(120, 390, 300, 20);
         add(Cantidad);
         
         /* Campos de Unidad de producto */
@@ -123,12 +125,12 @@ public class MainPanel extends JPanel{
         JLabel labelUnidad = new JLabel("Unidad:");
         labelUnidad.setFont(new Font("Arial", Font.PLAIN, 15));
         labelUnidad.setForeground(Color.decode("#006BFF"));
-        labelUnidad.setBounds(393,100,120,50);
+        labelUnidad.setBounds(520,175,120,50);
         add(labelUnidad);
         
         listaUnidad = context.LlenarUnidad();
         Unidad = new JComboBox(listaUnidad);
-        Unidad.setBounds(445, 115, 100, 20);
+        Unidad.setBounds(620, 210, 100, 20); 
         add(Unidad);
         
         /* Campos de Detalle de producto */
@@ -136,12 +138,12 @@ public class MainPanel extends JPanel{
         JLabel labelDetalle = new JLabel("Categoria:");
         labelDetalle.setFont(new Font("Arial", Font.PLAIN, 15));
         labelDetalle.setForeground(Color.decode("#006BFF"));
-        labelDetalle.setBounds(20,120,120,50);
+        labelDetalle.setBounds(520,310,120,50);
         add(labelDetalle);
         
         listaCategoria = context.LlenarCategoria();
         Categoria = new JComboBox(listaCategoria);
-        Categoria.setBounds(100, 145, 100, 20);
+        Categoria.setBounds(620,345,100,20);
         add(Categoria);
         
         /* Label de Mensajes */
@@ -149,7 +151,7 @@ public class MainPanel extends JPanel{
         JLabel mensajes = new JLabel();
         mensajes.setFont(new Font("Arial", Font.BOLD, 15));
         mensajes.setForeground(Color.decode("#FFBD00"));
-        mensajes.setBounds(20,210,500,50);
+        mensajes.setBounds(20,120,500,50);
         add(mensajes);        
                 
         /* Declaración y Evento de boton Crear */
@@ -158,8 +160,9 @@ public class MainPanel extends JPanel{
         tabla.setModel(context.RefreshProducto());
         JScrollPane tableContainer = new JScrollPane(tabla);
         
+        
         JButton botonCrear = new JButton("Crear");
-        botonCrear.setBounds(20, 200, 100, 20);
+        botonCrear.setBounds(120, 500, 100, 20);
         botonCrear.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -190,7 +193,7 @@ public class MainPanel extends JPanel{
         /* Declaración y Evento de boton Eliminar */
         
         JButton botonBorrar = new JButton("Eliminar");
-        botonBorrar.setBounds(120, 200, 100, 20);
+        botonBorrar.setBounds(220, 500, 100, 20);
         botonBorrar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -216,7 +219,7 @@ public class MainPanel extends JPanel{
         /* Declaración y Evento de boton Buscar */
         
         JButton botonBuscar = new JButton("Buscar");
-        botonBuscar.setBounds(220, 200, 100, 20);
+        botonBuscar.setBounds(320, 500, 100, 20);
         botonBuscar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -241,7 +244,7 @@ public class MainPanel extends JPanel{
         /* Declaración y Evento de boton Actualizar */
         
         JButton botonActualizar = new JButton("Actualizar");
-        botonActualizar.setBounds(320, 200, 100, 20);
+        botonActualizar.setBounds(420, 500, 100, 20);
         botonActualizar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -272,7 +275,7 @@ public class MainPanel extends JPanel{
         /* Declaración y Evento de boton Refrescar */
         
         JButton botonRefrescar = new JButton("Refrescar");
-        botonRefrescar.setBounds(420, 200, 100, 20);
+        botonRefrescar.setBounds(520, 500, 100, 20);
         botonRefrescar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -289,7 +292,7 @@ public class MainPanel extends JPanel{
         add(botonRefrescar);
         
         JButton botonListar = new JButton("Listar");
-        botonListar.setBounds(520, 200, 100, 20);
+        botonListar.setBounds(620, 500, 100, 20);
         botonListar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -337,7 +340,7 @@ class Tabla extends JFrame{
     
     public Tabla(DefaultTableModel modelo) throws SQLException{
         setTitle("Ferreteria");
-        setSize(700,510);
+        setSize(830,610);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         getContentPane().setBackground(Color.decode("#CADCF5"));
         getContentPane().setLayout(null);        
@@ -345,13 +348,29 @@ class Tabla extends JFrame{
         setLocationRelativeTo(null);
         setVisible(false);
         
+        
+        
         this.model = modelo;
         tabla = new JTable();
+        
+                
         this.settingModel();
         JPanel panel = new JPanel();
-        panel.setBounds(20,20,640,430);
+        panel.setBounds(20,20,770,530);
         panel.setBackground(Color.WHITE);
         JScrollPane tableContainer = new JScrollPane(tabla);
+        //tabla.setLocation(20, 20);
+        //tabla.setBounds(20, 20, 400, 400);
+        
+        tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF );
+        tabla.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tabla.getColumnModel().getColumn(2).setPreferredWidth(100);
+        //tabla.getColumnModel().getColumn(3).setPreferredWidth(100);
+        //tabla.getColumnModel().getColumn(4).setPreferredWidth(200);
+        //tabla.getColumnModel().getColumn(5).setPreferredWidth(200);
+        //tabla.getColumnModel().getColumn(6).setPreferredWidth(200);
+        
+        
         panel.add(tableContainer);
         add(panel);
     }
